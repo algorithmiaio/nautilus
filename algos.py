@@ -5,6 +5,10 @@ from glue import *
 from algo_type import AlgoTypes
 
 class Algorithm(object):
+    '''
+    Algorithm is defined as an API endpoint that has a certain function.
+    Does not only refer to an Algorithmia algorithm.
+    '''
     def __init__(self, api_key, algo_name, algo_type, glue):
         self.types = AlgoTypes()
         self.type = algo_type
