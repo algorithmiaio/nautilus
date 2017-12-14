@@ -16,8 +16,7 @@ class Dataset(object):
 
 class SentimentDataset(object):
     def __init__(self, data_world_api_key=None):
-        self.data_world_api_key = data_world_api_key
-        self.data_set = None
+        super().__init__(data_world_api_key)
         self.positive_sentiment = None
         self.neutral_sentiment = None
         self.negative_sentiment = None
@@ -37,6 +36,7 @@ class SentimentDataset(object):
 
 class AppleComputersTwitterSentiment(SentimentDataset):
     def __init__(self, data_world_api_key=None):
+        super().__init__(data_world_api_key)
         self.data_world_api_key = data_world_api_key
         self.data_set = pd.read_csv('https://query.data.world/s/0cUqqvqhsPW532T5HZqFYuWuqWp2mS', encoding='ISO-8859-1')
         self.init_lambda_functions()
