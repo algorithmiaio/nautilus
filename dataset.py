@@ -14,7 +14,7 @@ class Dataset(object):
         # Override method after inheritance
         return self.data_set
 
-class SentimentDataset(object):
+class SentimentDataset(Dataset):
     def __init__(self, data_world_api_key=None):
         super().__init__(data_world_api_key)
         self.positive_sentiment = None
@@ -48,7 +48,9 @@ class AppleComputersTwitterSentiment(SentimentDataset):
         self.compound_sentiment = self.get_compound_sentiment()
 
     def init_lambda_functions(self):
-        self.lambda_compound_sentiment_confidence = lambda x: int(x["sentiment"])*x["sentiment:confidence"]
+        self.lambda_positive_compound_sentiment_confidence = lambda x: x["sentiment:confidence"]
+        self.lambda_neutral_compound_sentiment_confidence = lambda x: 0
+        self.lambda_negative_compound_sentiment_confidence = lambda x: -1*x["sentiment:confidence"]
 
     def remove_missing_sentiment(self):
         # Remove any tweet that does not contain information about sentiment
@@ -59,7 +61,12 @@ class AppleComputersTwitterSentiment(SentimentDataset):
         ]
 
     def calculate_compound_sentiment(self):
-        self.data_set["sentiment:compound_confidence"] = self.data_set.apply(self.lambda_compound_sentiment_confidence, axis=1)
+        self.data_set.loc[(self.data_set["sentiment"] == "5"), "sentiment:compound_confidence"] = \
+            self.data_set.apply(self.lambda_positive_compound_sentiment_confidence, axis=1)
+        self.data_set.loc[(self.data_set["sentiment"] == "3"), "sentiment:compound_confidence"] = \
+            self.data_set.apply(self.lambda_neutral_compound_sentiment_confidence, axis=1)
+        self.data_set.loc[(self.data_set["sentiment"] == "1"), "sentiment:compound_confidence"] = \
+            self.data_set.apply(self.lambda_negative_compound_sentiment_confidence, axis=1)
 
     def get_positive_sentiment(self):
         return self.data_set[(self.data_set["sentiment"] == "5")][["text", "sentiment:confidence"]]
