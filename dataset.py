@@ -8,10 +8,31 @@ class Dataset(object):
         self.data_world_api_key = data_world_api_key
         self.data_set = None
     def read_dataset(self):
-        # Override for loading dataset file into a dataframe
+        # Override method after inheritance
         return self.data_set
 
-class AppleComputersTwitterSentiment(Dataset):
+class SentimentDataset(object):
+    def __init__(self, data_world_api_key=None):
+        self.data_world_api_key = data_world_api_key
+        self.data_set = None
+        self.positive_sentiment = None
+        self.neutral_sentiment = None
+        self.negative_sentiment = None
+        self.compound_sentiment = None
+
+    def get_positive_sentiment():
+        # Override method after inheritance
+        return self.positive_sentiment
+
+    def get_neutral_sentiment():
+        # Override method after inheritance
+        return self.neutral_sentiment
+
+    def get_negative_sentiment():
+        # Override method after inheritance
+        return self.negative_sentiment
+
+class AppleComputersTwitterSentiment(SentimentDataset):
     def __init__(self, data_world_api_key=None):
         self.data_world_api_key = data_world_api_key
         self.data_set = pd.read_csv('https://query.data.world/s/0cUqqvqhsPW532T5HZqFYuWuqWp2mS', encoding='ISO-8859-1')
