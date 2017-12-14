@@ -1,0 +1,4 @@
+numpy==1.13.3
+seaborn==0.8.1
+algorithmia==1.0.8
+pandas==0.21.1
