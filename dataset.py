@@ -7,7 +7,7 @@ class Dataset(object):
     def __init__(self, data_world_api_key=None):
         self.data_world_api_key = data_world_api_key
         self.data_set = None
-    def read_dataset(self):
+    def get_dataset(self):
         # Override method after inheritance
         return self.data_set
 
