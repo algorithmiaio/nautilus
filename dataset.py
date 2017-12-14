@@ -4,6 +4,9 @@ from Algorithmia import client
 import pandas as pd
 
 class Dataset(object):
+    '''
+    Dataset should be formatted as a pandas DataFrame.
+    '''
     def __init__(self, data_world_api_key=None):
         self.data_world_api_key = data_world_api_key
         self.data_set = None
