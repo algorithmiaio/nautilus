@@ -27,6 +27,15 @@ def test_verify_negative_sentiment_values():
     # There should only be 1219 negative tweets
     assert len(ds.get_negative_sentiment()) == 1219
 
+def test_verify_compound_sentiment_values():
+    # There should be 3804 compound tweets
+    assert len(ds.get_compound_sentiment()) == 3804
+
+def test_verify_compound_scores():
+    # Make sure that compound score are between -1 and 1
+    assert min(ds.get_compound_sentiment()["sentiment:compound_confidence"]) >= -1
+    assert max(ds.get_compound_sentiment()["sentiment:compound_confidence"]) <= 1
+
 def test_define_algorithmia_algorithms(algorithmia_api_key):
     algo1_name = "nlp/SentimentAnalysis/1.0.4"
     algo1_type = "classification"
