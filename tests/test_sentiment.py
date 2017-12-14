@@ -6,7 +6,7 @@
 
 # To run this test, run the following in the project root directory:
 # python -m pytest tests/test_sentiment.py --algorithmia_api_key=simXXXXXXXXXX
-
+import pytest
 from dataset import AppleComputersTwitterSentiment
 from algos import AlgorithmiaAlgorithm
 
@@ -28,9 +28,9 @@ def test_verify_negative_sentiment_values():
     assert len(ds.get_negative_sentiment()) == 1219
 
 def test_define_algorithmia_algorithms(algorithmia_api_key):
-    algo1_name = ""
-    algo1_type = ""
-    algo1_glue = ""
+    algo1_name = "nlp/SentimentAnalysis/1.0.4"
+    algo1_type = "classification"
+    algo1_glue = None
     sentiment_algo_1 = AlgorithmiaAlgorithm(api_key=algorithmia_api_key,
         algo_name=algo1_name, algo_type=algo1_type, glue=algo1_glue)
     assert(False)
