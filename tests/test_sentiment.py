@@ -4,7 +4,11 @@
 # Comparing sentiment analysis algorithms unit-test
 # Dataset from: http://ai.stanford.edu/~amaas/data/sentiment/
 
+# To run this test, run the following in the project root directory:
+# python -m pytest tests/test_sentiment.py --algorithmia_api_key=simXXXXXXXXXX
+
 from dataset import AppleComputersTwitterSentiment
+from algos import AlgorithmiaAlgorithm
 
 ds = AppleComputersTwitterSentiment()
 
@@ -23,7 +27,12 @@ def test_verify_negative_sentiment_values():
     # There should only be 1219 negative tweets
     assert len(ds.get_negative_sentiment()) == 1219
 
-def test_define_algorithms():
+def test_define_algorithmia_algorithms(algorithmia_api_key):
+    algo1_name = ""
+    algo1_type = ""
+    algo1_glue = ""
+    sentiment_algo_1 = AlgorithmiaAlgorithm(api_key=algorithmia_api_key,
+        algo_name=algo1_name, algo_type=algo1_type, glue=algo1_glue)
     assert(False)
 
 def test_create_glues():
