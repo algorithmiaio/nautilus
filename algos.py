@@ -15,10 +15,22 @@ class Algorithm(object):
         if not self.types.valid_type(self.type):
             raise Exception("Algorithm is not a valid type.")
         self.glue = glue
-        self.client = client(api_key)
-        self.algo = self.client.algo(algo_name)
+        self.client = None
+        self.algo = None
         self.metadata = None
         self.result = None
+
+    def call(self, input):
+        return self.result
+
+class AlgorithmiaAlgorithm(Algorithm):
+    '''
+    An Algorithmia algorithm.
+    '''
+    def __init__(self, api_key, algo_name, algo_type, glue):
+        super().__init__(api_key, algo_name, algo_type, glue)
+        self.client = client(api_key)
+        self.algo = self.client.algo(algo_name)
 
     def call(self, input):
         res = self.algo.pipe(input)
