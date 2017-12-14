@@ -23,9 +23,6 @@ def test_verify_negative_sentiment_values():
     # There should only be 1219 negative tweets
     assert len(ds.get_negative_sentiment()) == 1219
 
-def test_load_dataset():
-    assert(False)
-
 def test_define_algorithms():
     assert(False)
 
