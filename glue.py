@@ -72,8 +72,12 @@ class AlgorithmiaNlpSocialSentimentAnalysis(SentimentAnalysisGlue):
         self.input_structure = {}
         self.output_structure = {}
         self.input_structure["sentence"] = str
-        self.output_structure["sentiment"] = float
-        self.output_structure["document"] = str
+        self.output_structure["sentiment"] = {}
+        self.output_structure["sentiment"]["positive"] = float
+        self.output_structure["sentiment"]["neutral"] = float
+        self.output_structure["sentiment"]["negative"] = float
+        self.output_structure["sentiment"]["compound"] = float
+        self.output_structure["sentence"] = str
 
     def process_input(self, user_input):
         algo_input = {}
