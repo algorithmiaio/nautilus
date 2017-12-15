@@ -2,3 +2,5 @@ numpy==1.13.3
 seaborn==0.8.1
 algorithmia==1.0.8
 pandas==0.21.1
+datadotworld[pandas]==1.4.2
+pytest==3.3.1
