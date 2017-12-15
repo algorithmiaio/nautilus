@@ -58,7 +58,7 @@ class AlgorithmiaNlpSentimentAnalysis(SentimentAnalysisGlue):
         algo_input = {}
         if not isinstance(i, str):
             raise Exception("Input must be a string.")
-        algo_input["document"] = i
+        algo_input["document"] = user_input
         return algo_input
 
     def output(self, algo_output):
