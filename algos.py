@@ -14,6 +14,8 @@ class Algorithm(object):
         self.type = algo_type
         if not self.types.valid_type(self.type):
             raise Exception("Algorithm is not a valid type.")
+        if isinstance(glue, type(None)):
+            raise Exception("Please provide a glue for your algorithm.")
         self.glue = glue
         self.client = None
         self.algo = None
