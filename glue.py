@@ -65,3 +65,27 @@ class AlgorithmiaNlpSentimentAnalysis(SentimentAnalysisGlue):
         user_output = {}
         self.sentiment["compound"] = algo_output[0]["sentiment"]
         return self.sentiment
+
+class AlgorithmiaNlpSocialSentimentAnalysis(SentimentAnalysisGlue):
+    def __init__(self):
+        super().__init__()
+        self.input_structure = {}
+        self.output_structure = {}
+        self.input_structure["sentence"] = str
+        self.output_structure["sentiment"] = float
+        self.output_structure["document"] = str
+
+    def input(self, user_input):
+        algo_input = {}
+        if not isinstance(i, str):
+            raise Exception("Input must be a string.")
+        algo_input["sentence"] = user_input
+        return algo_input
+
+    def output(self, algo_output):
+        user_output = {}
+        self.sentiment["positive"] = algo_output[0]["positive"]
+        self.sentiment["neutral"] = algo_output[0]["neutral"]
+        self.sentiment["negative"] = algo_output[0]["negative"]
+        self.sentiment["compound"] = algo_output[0]["compound"]
+        return self.sentiment
