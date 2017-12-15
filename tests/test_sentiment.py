@@ -32,7 +32,7 @@ def test_verify_compound_sentiment_values():
     assert len(ds.get_compound_sentiment()) == 3804
 
 def test_verify_compound_scores():
-    # Make sure that compound score are between -1 and 1
+    # Make sure that compound scores are between -1 and 1
     assert min(ds.get_compound_sentiment()["sentiment:compound_confidence"]) >= -1
     assert max(ds.get_compound_sentiment()["sentiment:compound_confidence"]) <= 1
 
