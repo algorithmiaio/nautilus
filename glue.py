@@ -45,7 +45,7 @@ class SentimentAnalysisGlue(Glue):
         self.sentiment["negative"] = None
         self.sentiment["compound"] = None
 
-class Algorithmia_Nlp_SentimentAnalysis(SentimentAnalysisGlue):
+class AlgorithmiaNlpSentimentAnalysis(SentimentAnalysisGlue):
     def __init__(self):
         super().__init__()
         self.input_structure = {}
