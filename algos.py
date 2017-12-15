@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # Author: A. Besir Kurtulmus
 from Algorithmia import client
-from glue import *
 from algo_type import AlgoTypes
 
 class Algorithm(object):
@@ -34,8 +33,9 @@ class AlgorithmiaAlgorithm(Algorithm):
         self.client = client(api_key)
         self.algo = self.client.algo(algo_name)
 
-    def call(self, input):
-        res = self.algo.pipe(input)
+    def call(self, user_input):
+        algo_input = self.glue.process_input(user_input)
+        res = self.algo.pipe(algo_input)
         self.metadata = res.metadata
-        self.result = res.result
+        self.result = self.glue.process_output(res.result)
         return self.result

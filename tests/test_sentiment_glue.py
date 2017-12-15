@@ -6,4 +6,4 @@
 
 # To run this test, run the following in the project root directory:
 # python -m pytest tests/test_sentiment_glue.py
-from glue import Algorithmia_Nlp_SentimentAnalysis
+from glue import AlgorithmiaNlpSentimentAnalysis

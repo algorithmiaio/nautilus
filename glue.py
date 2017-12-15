@@ -18,13 +18,13 @@ class Glue(object):
         if not self.types.valid_type(self.type):
             raise Exception("Algorithm is not a valid type.")
 
-    def input(self, user_input):
+    def process_input(self, user_input):
         # This takes the user input, and casts it into the algo input.
         # override this method
         algo_input = user_input
         return algo_input
 
-    def output(self, algo_output):
+    def process_output(self, algo_output):
         # This takes the algo output, and casts it into the user output.
         # override this method
         user_output = algo_output
@@ -54,14 +54,14 @@ class AlgorithmiaNlpSentimentAnalysis(SentimentAnalysisGlue):
         self.output_structure["sentiment"] = float
         self.output_structure["document"] = str
 
-    def input(self, user_input):
+    def process_input(self, user_input):
         algo_input = {}
-        if not isinstance(i, str):
+        if not isinstance(user_input, str):
             raise Exception("Input must be a string.")
         algo_input["document"] = user_input
         return algo_input
 
-    def output(self, algo_output):
+    def process_output(self, algo_output):
         user_output = {}
         self.sentiment["compound"] = algo_output[0]["sentiment"]
         return self.sentiment
@@ -75,14 +75,14 @@ class AlgorithmiaNlpSocialSentimentAnalysis(SentimentAnalysisGlue):
         self.output_structure["sentiment"] = float
         self.output_structure["document"] = str
 
-    def input(self, user_input):
+    def process_input(self, user_input):
         algo_input = {}
-        if not isinstance(i, str):
+        if not isinstance(user_input, str):
             raise Exception("Input must be a string.")
         algo_input["sentence"] = user_input
         return algo_input
 
-    def output(self, algo_output):
+    def process_output(self, algo_output):
         user_output = {}
         self.sentiment["positive"] = algo_output[0]["positive"]
         self.sentiment["neutral"] = algo_output[0]["neutral"]
