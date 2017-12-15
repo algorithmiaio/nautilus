@@ -16,7 +16,11 @@ How to install dis.
 
 How do I use this? eli5
 
-## 5. Testing
+## 5. Development
+
+How can I contribute?
+
+## 6. Testing
 
 Before testing, make sure that you have everything installed in the `requirements.txt` dependency file. We recommend using `virtualenv` to keep everything clean and isolated.
 
@@ -28,6 +32,6 @@ To start a test, run the following:
 python -m pytest tests/<test_name>.py
 ```
 
-## 6. Credits
+## 7. Credits
 
 Humblebrag a little here..
