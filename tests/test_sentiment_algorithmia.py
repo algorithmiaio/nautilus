@@ -6,7 +6,7 @@
 
 # To run this test, run the following in the project root directory:
 # python -m pytest tests/test_sentiment_algorithmia.py --algorithmia_api_key=simXXXXXXXXXX
-from algos import AlgorithmiaAlgorithm
+from algo import AlgorithmiaAlgorithm
 from glue import AlgorithmiaNlpSentimentAnalysis, AlgorithmiaNlpSocialSentimentAnalysis, \
     AlgorithmiaMtmanSentimentAnalysis
 
